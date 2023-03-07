@@ -1,0 +1,101 @@
+$color2: rgb(255, 255, 255);
+$color3: rgb(51, 51, 51);
+$color4: #e7e7e7;
+
+$text1: "Quicksand", sans-serif;
+$shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+@mixin defaultStyle {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: $color4;
+}
+
+@mixin styledText(
+  $size: 1.2rem,
+  $weight: 400,
+  $case: uppercase,
+  $color: $color3,
+  $spacing: 2px
+) {
+  font-size: $size;
+  text-transform: $case;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  color: $color;
+}
+
+@mixin flexBox(
+  $direction: row,
+  $alignItems: center,
+  $justifyContent: flex-start,
+  $spacing: 1rem
+) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+  gap: $spacing;
+}
+
+@mixin fill {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin container($maxW: 1200px, $h: 100vh, $p: 5vmax, $m: auto) {
+  margin: $m;
+  max-width: $maxW;
+  width: 100%;
+  height: $h;
+  padding: $p;
+}
+
+@mixin myButton($w: 10rem, $p: 0.5rem, $bgColor: $color3, $color: $color2) {
+  width: $w;
+  padding: calc($p * 1) calc($p * 3);
+  background-color: $bgColor;
+  border: 1px solid $bgColor;
+  color: $color;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  cursor: pointer;
+  &:hover {
+    background-color: $color;
+    color: $bgColor;
+  }
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+  }
+}
+
+@mixin hidescrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin grid(
+  $column: 1fr 2fr,
+  $alignItems: center,
+  $justifyContent: flex-start
+) {
+  display: grid;
+  grid-template-columns: $column;
+  align-items: $alignItems;
+  justify-items: $justifyContent;
+}
+
+@mixin inputs {
+  input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid $color4;
+    font: 400 1rem $text1;
+    background-color: $color2;
+    outline: none;
+  }
+}
